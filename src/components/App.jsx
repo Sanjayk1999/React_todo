@@ -1,6 +1,6 @@
 import React from 'react'
 import List from './List'
-
+import Additem from './Additem'
 class App extends React.Component{
 	state = {
 		todo:[
@@ -23,6 +23,7 @@ class App extends React.Component{
 		return (
 				<div className="app">
 					<h1>To do List</h1>
+					<Additem/>
 					<List items = {this.state.todo} />
 				</div>
 			)
