@@ -5,7 +5,7 @@ class Listitems extends React.Component{
 		return (
 				<div className="list-item">
 					<h3>{this.props.title}</h3>
-					<button>Delete</button>
+					<button onClick={()=>this.props.onDelete(this.props.id)}>Delete</button>
 				</div>
 			)
 	}

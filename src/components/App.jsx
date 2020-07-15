@@ -7,26 +7,42 @@ class App extends React.Component{
 		super();
 		this.state = {
 		todo:[
-			{
-				id:1,
-				title:'Do homework'
-			},
-			{
-				id:2,
-				title:'Workout'
-			},
-			{
-				id:3,
-				title:'Meditate'
-			}
-		]
+			// {
+			// 	id:1,
+			// 	title:'Do homework'
+			// },
+			// {
+			// 	id:2,
+			// 	title:'Workout'
+			// },
+			// {
+			// 	id:3,
+			// 	title:'Meditate'
+			// }
+		],
+		count:0
 		};
+
 		this.handleAdd = this.handleAdd.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	handleAdd(){
-		var title = document.getElementById('add').value;
-		console.log(title);
+		if(document.getElementById('add').value!==''){
+			var title = document.getElementById('add').value;
+			var item = {};
+			item.id = this.state.count;
+			item.title = title;
+			var todo = this.state.todo;
+			todo.push(item);
+			this.setState({todo:todo});
+			this.setState({count:this.state.count+1}); 
+	}
+	}
+
+	handleDelete(itemId){
+		var todo = this.state.todo.filter(item => item.id!==itemId);
+		this.setState({todo:todo});
 	}
 
 	render(){
@@ -34,7 +50,7 @@ class App extends React.Component{
 				<div className="app">
 					<h1>To do List</h1>
 					<Additem onAdd={this.handleAdd}/>
-					<List items = {this.state.todo} />
+					<List Delete={this.handleDelete} items = {this.state.todo} />
 				</div>
 			)
 	}

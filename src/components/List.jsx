@@ -6,7 +6,7 @@ class List extends React.Component{
 
 		return (
 				<div className="list">
-					{this.props.items.map(item=> <Listitems key={item.id} title={item.title}/>)}
+					{this.props.items.map(item=> <Listitems onDelete={this.props.Delete} id={item.id} key={item.id} title={item.title}/>)}
 				</div>
 			)
 	}
